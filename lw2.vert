@@ -6,7 +6,7 @@ uniform float uTranslationX;
 void main() 
 {
 colorf=color;
-//gl_Position=vec4(aVertexPosition,1.f);// La sortie 
+
 gl_Position=vec4(aVertexPosition.x+uTranslationX,aVertexPosition.y,aVertexPosition.z,1.f); 
 																							
 }
