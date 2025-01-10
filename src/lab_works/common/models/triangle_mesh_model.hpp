@@ -16,7 +16,7 @@ namespace M3D_ISICG
 		TriangleMeshModel()			 = default;
 		virtual ~TriangleMeshModel() = default;
 
-		// Load a 3D model with Assimp.
+		
 		void load( const std::string & p_name, const FilePath & p_filePath );
 
 		void setupGL();
@@ -31,9 +31,9 @@ namespace M3D_ISICG
 		Material _loadMaterial( const aiMaterial * const p_mtl );
 
 	  public:
-		std::vector<TriangleMesh> _meshes;		   // A model can contain several meshes.
-		std::vector<Texture>	  _loadedTextures; // Avoid to load a texture more than once.
-		// Some stats.
+		std::vector<TriangleMesh> _meshes;		   
+		std::vector<Texture>	  _loadedTextures;
+		
 		int _nbTriangles = 0;
 		int _nbVertices	 = 0;
 
