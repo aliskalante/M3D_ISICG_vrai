@@ -12,13 +12,10 @@ namespace M3D_ISICG
 
 		Assimp::Importer importer;
 
-		// Importer options
+		// 
 		const unsigned int flags = aiProcessPreset_TargetRealtime_Fast | aiProcess_FlipUVs;
 
-		// Read scene:
-		// - Triangulates meshes
-		// - Computes vertex normals
-		// - Computes tangent space (tangent and bitagent)
+		
 		const aiScene * const scene = importer.ReadFile( p_filePath, flags );
 
 		if ( scene == nullptr )
@@ -33,9 +30,9 @@ namespace M3D_ISICG
 		}
 		_meshes.shrink_to_fit();
 
-		std::cout << "Done! "						//
-				  << _meshes.size() << " meshes, "	//
-				  << _nbTriangles << " triangles, " //
+		std::cout << "Done! "						
+				  << _meshes.size() << " meshes, "	
+				  << _nbTriangles << " triangles, " 
 				  << _nbVertices << " vertices" << std::endl;
 	}
 
@@ -66,30 +63,30 @@ namespace M3D_ISICG
 		if ( VERBOSE )
 			std::cout << "-- Loading mesh: " << meshName << std::endl;
 
-		// Load vertex attributes.
+		// Load vertex attributes
 		std::vector<Vertex> vertices;
 		vertices.resize( p_mesh->mNumVertices );
 		for ( unsigned int v = 0; v < p_mesh->mNumVertices; ++v )
 		{
 			Vertex & vertex = vertices[ v ];
-			// Position.
+			// Position
 			vertex._position.x = p_mesh->mVertices[ v ].x;
 			vertex._position.y = p_mesh->mVertices[ v ].y;
 			vertex._position.z = p_mesh->mVertices[ v ].z;
-			// Normal.
+			// Normal
 			vertex._normal.x = p_mesh->mNormals[ v ].x;
 			vertex._normal.y = p_mesh->mNormals[ v ].y;
 			vertex._normal.z = p_mesh->mNormals[ v ].z;
-			// Texture coordinates.
+			// Texture coordinates
 			if ( p_mesh->HasTextureCoords( 0 ) )
 			{
 				vertex._texCoords.x = p_mesh->mTextureCoords[ 0 ][ v ].x;
 				vertex._texCoords.y = p_mesh->mTextureCoords[ 0 ][ v ].y;
-				// Tangent.
+				// Tangent
 				vertex._tangent.x = p_mesh->mTangents[ v ].x;
 				vertex._tangent.y = p_mesh->mTangents[ v ].y;
 				vertex._tangent.z = p_mesh->mTangents[ v ].z;
-				// Bitangent.
+				// Bitangent
 				vertex._bitangent.x = p_mesh->mBitangents[ v ].x;
 				vertex._bitangent.y = p_mesh->mBitangents[ v ].y;
 				vertex._bitangent.z = p_mesh->mBitangents[ v ].z;
@@ -101,9 +98,9 @@ namespace M3D_ISICG
 			}
 		}
 
-		// Load indices.
+		// Load indices
 		std::vector<unsigned int> indices;
-		indices.resize( p_mesh->mNumFaces * 3 ); // Triangulated.
+		indices.resize( p_mesh->mNumFaces * 3 ); // Triangulated
 		for ( unsigned int f = 0; f < p_mesh->mNumFaces; ++f )
 		{
 			const aiFace &	   face = p_mesh->mFaces[ f ];
@@ -113,7 +110,7 @@ namespace M3D_ISICG
 			indices[ f3 + 2 ]		= face.mIndices[ 2 ];
 		}
 
-		// Load materials.
+		// Load materials
 		const aiMaterial * const mtl = p_scene->mMaterials[ p_mesh->mMaterialIndex ];
 		Material				 material;
 		if ( mtl == nullptr )
