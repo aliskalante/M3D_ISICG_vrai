@@ -3,33 +3,33 @@
 
 #include "GL/gl3w.h"
 #include "define.hpp"
-#include <iostream>
+#include <string>
 #include <vector>
 
 namespace M3D_ISICG
 {
 	struct Vertex
 	{
-		Vec3f _position;
-		Vec3f _normal;
-		Vec2f _texCoords;
-		Vec3f _tangent;
-		Vec3f _bitangent;
+		Vec3f _position;  // Position of the vertex
+		Vec3f _normal;	  // Normal of the vertex
+		Vec2f _texCoords; // Texture coordinates
+		Vec3f _tangent;	  // Tangent vector
+		Vec3f _bitangent; // Bitangent vector
 	};
 
 	struct Texture
 	{
-		unsigned int _id;
-		std::string	 _type;
-		std::string	 _path;
+		unsigned int _id;	// Texture ID
+		std::string	 _type; // Texture type (e.g., diffuse, specular)
+		std::string	 _path; // File path
 	};
 
 	struct Material
 	{
-		Vec3f _ambient	 = VEC3F_ZERO;
-		Vec3f _diffuse	 = VEC3F_ZERO;
-		Vec3f _specular	 = VEC3F_ZERO;
-		float _shininess = 0.f;
+		Vec3f _ambient	 = VEC3F_ZERO; // Ambient color
+		Vec3f _diffuse	 = VEC3F_ZERO; // Diffuse color
+		Vec3f _specular	 = VEC3F_ZERO; // Specular color
+		float _shininess = 0.f;		   // Shininess factor
 
 		bool _hasAmbientMap	  = false;
 		bool _hasDiffuseMap	  = false;
@@ -46,6 +46,7 @@ namespace M3D_ISICG
 	{
 	  public:
 		TriangleMesh() = delete;
+
 		TriangleMesh( const std::string &				p_name,
 					  const std::vector<Vertex> &		p_vertices,
 					  const std::vector<unsigned int> & p_indices,
@@ -53,24 +54,33 @@ namespace M3D_ISICG
 
 		~TriangleMesh() = default;
 
+		// Renders the mesh
 		void render( const GLuint p_glProgram ) const;
 
+		// Cleans up GL resources
 		void cleanGL();
 
+		// Sets up GL resources
+		void setupGL();
+
 	  private:
-		void _setupGL();
+		// Binds material properties to the shader
+		void _bindMaterialToShader( const GLuint p_glProgram ) const;
+
+		// Sets up vertex attributes for the VAO
+		void _setupVertexAttributes() const;
 
 	  public:
 		std::string _name = "Unknown";
 
-		// ================ Geometric data.
+		// Geometric data
 		std::vector<Vertex>		  _vertices;
 		std::vector<unsigned int> _indices;
 
-		// ================ Material data.
+		// Material data
 		Material _material;
 
-		// ================ GL data.
+		// GL data
 		GLuint _vao = GL_INVALID_INDEX; // Vertex Array Object
 		GLuint _vbo = GL_INVALID_INDEX; // Vertex Buffer Object
 		GLuint _ebo = GL_INVALID_INDEX; // Element Buffer Object

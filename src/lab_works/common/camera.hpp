@@ -1,58 +1,67 @@
-#ifndef __CAMERA_HPP__
-#define __CAMERA_HPP__
+#ifndef CAMERA_HPP
+#define CAMERA_HPP
 
-#include "GL/gl3w.h"
-#include "define.hpp"
+#include <glm/glm.hpp>
 
 namespace M3D_ISICG
 {
-	// Freefly camera.
+	// Freefly camera class
 	class Camera
 	{
 	  public:
+		// Constructor
 		Camera();
 
-		inline const Mat4f & getViewMatrix() const { return _viewMatrix; }
-		inline const Mat4f & getProjectionMatrix() const { return _projectionMatrix; }
+		// Getters
+		const glm::mat4 &		 getViewMatrix() const;
+		const glm::mat4 &		 getProjectionMatrix() const;
+		inline const glm::vec3 & getPosition() const { return _position; }
+		int						 getScreenWidth() const { return _screenWidth; }
+		int						 getScreenHeight() const { return _screenHeight; }
 
-		void setPosition( const Vec3f & p_position );
-		void setLookAt( const Vec3f & p_lookAt );
-		void setFovy( const float p_fovy );
+		// Setters
+		void setPosition( const glm::vec3 & p_position );
+		void setLookAt( const glm::vec3 & p_lookAt );
+		void setFovy( float p_fovy );
+		void setScreenSize( int p_width, int p_height );
 
-		void setScreenSize( const int p_width, const int p_height );
+		// Movement
+		void moveFront( float p_delta );
+		void moveRight( float p_delta );
+		void moveUp( float p_delta );
 
-		void  moveFront( const float p_delta );
-		void  moveRight( const float p_delta );
-		void  moveUp( const float p_delta );
-		void  rotate( const float p_yaw, const float p_pitch );
-		Vec3f Positioncamera();
-		Vec3f GetlightDirection();
-		void  print() const;
+		// Rotation
+		void rotate( float p_yaw, float p_pitch );
+
+		// Debug
+		void print() const;
 
 	  private:
+		// Helper functions
 		void _computeViewMatrix();
 		void _computeProjectionMatrix();
 		void _updateVectors();
 
-	  private:
-		Vec3f _position		= VEC3F_ZERO;
-		Vec3f _invDirection = Vec3f( 0.f, 0.f, 1.f );  // Dw dans le cours.
-		Vec3f _right		= Vec3f( -1.f, 0.f, 0.f ); // Rw dans le cours.
-		Vec3f _up			= Vec3f( 0.f, 1.f, 0.f );  // Uw dans le cours.
-		// Angles defining the orientation in degrees
-		float _yaw	 = 90.f;
-		float _pitch = 0.f;
+		// Camera attributes
+		glm::vec3 _position		= glm::vec3( 0.0f, 0.0f, 0.0f );
+		glm::vec3 _invDirection = glm::vec3( 0.0f, 0.0f, -1.0f );
+		glm::vec3 _right		= glm::vec3( 1.0f, 0.0f, 0.0f );
+		glm::vec3 _up			= glm::vec3( 0.0f, 1.0f, 0.0f );
 
-		int	  _screenWidth	= 1280;
-		int	  _screenHeight = 720;
-		float _aspectRatio	= float( _screenWidth ) / _screenHeight;
-		float _fovy			= 60.f;
-		float _zNear		= 0.1f;
-		float _zFar			= 1000.f;
+		// Angles and view attributes
+		float _yaw		   = -90.0f; // Rotation angle around Y-axis
+		float _pitch	   = 0.0f;	 // Rotation angle around X-axis
+		float _fovy		   = 45.0f;	 // Field of view (vertical)
+		float _aspectRatio = 16.0f / 9.0f;
 
-		Mat4f _viewMatrix		= MAT4F_ID;
-		Mat4f _projectionMatrix = MAT4F_ID;
+		// Screen dimensions
+		int _screenWidth  = 1280;
+		int _screenHeight = 720;
+
+		// Matrices
+		glm::mat4 _viewMatrix;
+		glm::mat4 _projectionMatrix;
 	};
 } // namespace M3D_ISICG
 
-#endif // __CAMERA_HPP__
+#endif // CAMERA_HPP

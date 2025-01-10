@@ -6,6 +6,6 @@ uniform float c_luminosite;
 
 void main()
 {
-    vec3 adjustedColor = colorf * c_luminosite; // ajuster couleur par luminosite
-    fragColor = vec4(adjustedColor, 1.0);      // fragment couleur
+    vec3 adjustedColor = colorf * c_luminosite; // Adjust color by luminosity
+    fragColor = vec4(adjustedColor, 1.0);      // Set fragment color
 }

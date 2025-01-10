@@ -52,7 +52,6 @@
     <ClInclude Include="lib\imgui\backends\imgui_impl_sdl.h" />
     <ClInclude Include="lib\imgui\imgui.h" />
     <ClInclude Include="lib\imgui\imgui_internal.h" />
-    <ClInclude Include="lw3.vert" />
     <ClInclude Include="src\application.hpp" />
     <ClInclude Include="src\define.hpp" />
     <ClInclude Include="src\lab_works\common\base_lab_work.hpp" />
@@ -74,10 +73,12 @@
     <None Include="lw2.frag" />
     <None Include="lw2.vert" />
     <None Include="lw3.frag" />
+    <None Include="lw3.vert" />
     <None Include="mesh.frag" />
     <None Include="mesh.vert" />
     <None Include="meshtexture.frag" />
     <None Include="meshtexture.vert" />
+    <None Include="sahding_pass.vert" />
     <None Include="shading_pass.frag" />
     <None Include="src\lab_works\lab_work_1\shaders\lw1.frag" />
     <None Include="src\lab_works\lab_work_1\shaders\lw1.vert" />

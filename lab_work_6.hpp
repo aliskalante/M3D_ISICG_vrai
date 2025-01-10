@@ -1,12 +1,9 @@
 #ifndef __LAB_WORK_6_HPP__
 #define __LAB_WORK_6_HPP__
-#include "GL/gl3w.h"
+
 #include "common/base_lab_work.hpp"
 #include "common/camera.hpp"
-#include "common/models/triangle_mesh.hpp"
 #include "common/models/triangle_mesh_model.hpp"
-#include "define.hpp"
-#include <vector>
 
 namespace M3D_ISICG
 {
@@ -14,66 +11,66 @@ namespace M3D_ISICG
 	{
 	  public:
 		LabWork6() : BaseLabWork() {}
-		~LabWork6();
+		~LabWork6() override;
 
-		bool init() override;
-		void animate( const float p_deltaTime ) override;
-		void render() override;
-
-		void handleEvents( const SDL_Event & p_event ) override;
+		// Méthodes principales
+		bool init() override;	// Initialise tout (G-Buffer, shaders, etc.)
+		void render() override; // Appel de la Geometry Pass + Shading Pass
 		void displayUI() override;
 
+		// Gestion d'événements et d'animation (optionnel)
+		void handleEvents( const SDL_Event & p_event ) override {}
+		void animate( const float p_deltaTime ) override {}
+
 	  private:
-		// ================ Scene data.
-
-		Camera			  camera;
-		TriangleMeshModel bunny;
-
-		void _initCamera();
-		void _updateViewMatrix();
-
-		float			  _cameraSpeed		 = 0.1f;
-		float			  _cameraSensitivity = 0.1f;
-		const std::string vertexShaderStr;	 // Déclaration de variable pour lire et stocker vertex shader
-		const std::string fragmentShaderStr; // Déclaration de variable pour lire et stocker fragment shader
-		// ================ GL data.
-		GLuint vertexShader, fragmentShader; // Déclaration des shaders
-		GLuint _geometryPassProgram;		 // pour stocker l’identifiant de l’objet Program
-		GLuint _shadingPassProgram;
-		GLint  location_MVP; // Pour l'adresse de la variable uniforme modelmatrix
-		GLuint location_ViewMatrix, location_ModelMatrix, location_ProjectionMatrix;
-		GLuint location_NormalMatrix;
-		GLuint locationCameraPos;
-		GLenum texture_à_afficher = GL_COLOR_ATTACHMENT1;
-		GLuint _Vao;
-		GLuint LightPOS;
-		//-----------------Les attributs pour les textures ---------------------------------------------------
-		GLuint _gBufferTextures[ 6 ]; // 6 attributs
-		GLuint FBO;
-
-		void PreparerGBuffuer();
-
+		// --------------------------------------------------------------------
+		// Pass géométrique
+		// --------------------------------------------------------------------
+		void prepareGBuffer();
 		void _geometryPass();
+
+		// --------------------------------------------------------------------
+		// Pass d'ombrage
+		// --------------------------------------------------------------------
+		void initShadingPass();
+		void initFullScreenQuad();
 		void _shadingPass();
 
-		void initialiser_geometryPassProgram();
-		void initialiser_shadingPassProgram();
+		// --------------------------------------------------------------------
+		// Contrôles et utilitaires
+		// --------------------------------------------------------------------
+		GLuint _compileShaders( const std::string & vertexSource, const std::string & fragmentSource );
+		void   checkShaderCompilation( GLuint shader );
+		void   checkProgramLinking( GLuint program );
 
-		void CreateCube();
+	  private:
+		// Camera (pour les matrices projection/view)
+		Camera _camera;
 
-		// ================
-		// Mat4f modelView = glm::mat4( 1.f );
-		Mat4f			 MVPa;
-		std::vector<int> Indices = { 0, 1, 2, 0, 1, 3 };
+		// Modèle 3D (bunny)
+		TriangleMeshModel _bunnyModel;
 
-		std::vector<Vec2f> PositionsSommet
-			= { Vec2f( 5.0f, 5.0f ), Vec2f( -5.0f, -5.0f ), Vec2f( 5.0f, -5.0f ), Vec2f( -5.0f, 5.0f ) };
-		// ================ Settings.
-		Vec4f _bgColor = Vec4f( 0.8f, 0.8f, 0.8f, 1.f ); // Background color
+		// Programmes (shaders)
+		GLuint _geometryPassProgram = 0;
+		GLuint _shadingPassProgram	= 0;
 
-		// ================
+		// G-Buffer : Framebuffer et textures
+		GLuint _gBufferFBO			 = 0;
+		GLuint _gBufferTextures[ 6 ] = { 0, 0, 0, 0, 0, 0 };
 
-		static const std::string _shaderFolder;
+		// Indice de la texture G-Buffer affichée
+		GLuint _selectedTextureIndex = 0;
+
+		// Paramètres de matériau
+		glm::vec3 _ambientColor	 = glm::vec3( 0.1f, 0.1f, 0.1f );
+		glm::vec3 _diffuseColor	 = glm::vec3( 1.0f, 1.0f, 1.0f );
+		glm::vec3 _specularColor = glm::vec3( 1.0f, 1.0f, 1.0f );
+		float	  _shininess	 = 32.0f;
+
+		// Quad plein écran pour le shading pass
+		GLuint _quadVAO = 0;
+		GLuint _quadVBO = 0;
+		GLuint _quadEBO = 0;
 	};
 } // namespace M3D_ISICG
 

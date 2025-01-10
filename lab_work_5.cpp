@@ -1,185 +1,180 @@
 #include "lab_work_5.hpp"
 #include "glm/gtc/type_ptr.hpp"
 #include "imgui.h"
-#include "utils/random.hpp" //bib pour getrandomvec3f
+#include "utils/random.hpp"
 #include "utils/read_file.hpp"
 #include <iostream>
+
 namespace M3D_ISICG
 {
 	const std::string LabWork5::_shaderFolder = "src/lab_works/lab_work_5/shaders/";
 
 	LabWork5::~LabWork5()
 	{
-		glDeleteProgram( Program ); // Destruction du programme
-		bunny.cleanGL();
+		glDeleteProgram( _program );
+		_bunny.cleanGL();
 	}
 
 	bool LabWork5::init()
 	{
-		const std::string vertexShaderStr
-			= readFile( _shaderFolder + "meshtexture.vert" ); // lire le shader  et le stocker dans vertexShaderStr
-		const std::string fragmentShaderStr
-			= readFile( _shaderFolder + "meshtexture.frag" );	// lire le shader  et le stocker dans fragmentShaderStr
-		vertexShader	  = glCreateShader( GL_VERTEX_SHADER ); // Construction du vertex shader
-		fragmentShader	  = glCreateShader( GL_FRAGMENT_SHADER ); // Construction du fragment shader
-		const char * VSrc = vertexShaderStr.c_str();	  // variable intermédiaire pour l'utiliser dans glCreateShader
-		const char * FSrc = fragmentShaderStr.c_str();	  // variable intermédiaire pour l'utiliser dans glCreateShader
-		glShaderSource( vertexShader, 1, &VSrc, NULL );	  // Initialisation du code source pour vertex Shader
-		glShaderSource( fragmentShader, 1, &FSrc, NULL ); // Initialisation du code source pour fragment Shader
-		glCompileShader( vertexShader );				  // Compilation pour recupérer les erreurs de compilation
-		glCompileShader( fragmentShader );				  // Compilation pour recupérer les erreurs de compilation
-		std::cout << "Initializing lab work 4..." << std::endl;
-		// Set the color used by glClear to clear the color buffer
-		glClearColor( _bgColor.x, _bgColor.y, _bgColor.z, _bgColor.w );
+		std::cout << "Initializing Lab Work 5..." << std::endl;
+
+		// Load shaders
+		const std::string vertexShaderSource   = readFile( _shaderFolder + "meshtexture.vert" );
+		const std::string fragmentShaderSource = readFile( _shaderFolder + "meshtexture.frag" );
+
+		_vertexShader	= glCreateShader( GL_VERTEX_SHADER );
+		_fragmentShader = glCreateShader( GL_FRAGMENT_SHADER );
+
+		const char * vSource = vertexShaderSource.c_str();
+		const char * fSource = fragmentShaderSource.c_str();
+
+		glShaderSource( _vertexShader, 1, &vSource, NULL );
+		glShaderSource( _fragmentShader, 1, &fSource, NULL );
+
+		glCompileShader( _vertexShader );
+		glCompileShader( _fragmentShader );
 
 		GLint compiled;
-		glGetShaderiv( vertexShader, GL_COMPILE_STATUS, &compiled );
+		glGetShaderiv( _vertexShader, GL_COMPILE_STATUS, &compiled );
 		if ( !compiled )
 		{
 			GLchar log[ 1024 ];
-			glGetShaderInfoLog( vertexShader, sizeof( log ), NULL, log );
-			glDeleteShader( vertexShader );
-			glDeleteShader( fragmentShader );
-			std ::cerr << " Error compiling vertex shader : " << log << std ::endl;
-			return false;
-		}
-		// Check if compilation is ok
-		// fragment.----------------------------------------------------------------------------
-		glGetShaderiv( fragmentShader, GL_COMPILE_STATUS, &compiled );
-		if ( !compiled )
-		{
-			GLchar log[ 1024 ];
-			glGetShaderInfoLog( fragmentShader, sizeof( log ), NULL, log );
-			glDeleteShader( vertexShader );
-			glDeleteShader( fragmentShader );
-			std ::cerr << " Error compiling vertex shader : " << log << std ::endl;
+			glGetShaderInfoLog( _vertexShader, sizeof( log ), NULL, log );
+			std::cerr << "Vertex Shader Compilation Error: " << log << std::endl;
 			return false;
 		}
 
-		Program = glCreateProgram(); // Création du programme
-		// Attachage shaders/programme
-		glAttachShader( Program, vertexShader );
-		glAttachShader( Program, fragmentShader );
-		// Liaison du programme
-		glLinkProgram( Program );
+		glGetShaderiv( _fragmentShader, GL_COMPILE_STATUS, &compiled );
+		if ( !compiled )
+		{
+			GLchar log[ 1024 ];
+			glGetShaderInfoLog( _fragmentShader, sizeof( log ), NULL, log );
+			std::cerr << "Fragment Shader Compilation Error: " << log << std::endl;
+			return false;
+		}
+
+		// Link shaders into a program
+		_program = glCreateProgram();
+		glAttachShader( _program, _vertexShader );
+		glAttachShader( _program, _fragmentShader );
+		glLinkProgram( _program );
 
 		GLint linked;
-		glGetProgramiv( Program, GL_LINK_STATUS, &linked );
+		glGetProgramiv( _program, GL_LINK_STATUS, &linked );
 		if ( !linked )
 		{
 			GLchar log[ 1024 ];
-			glGetProgramInfoLog( Program, sizeof( log ), NULL, log );
-			std ::cerr << " Error linking program : " << log << std ::endl;
+			glGetProgramInfoLog( _program, sizeof( log ), NULL, log );
+			std::cerr << "Program Linking Error: " << log << std::endl;
 			return false;
 		}
 
-		glUseProgram( Program );
-		_initCamera(); // appel de la fct pour l'initialisation du camera
+		glUseProgram( _program );
 
-		// bunny.load( "Bunny", "data/models/bunny2/bunny_2.obj" );
-		bunny.load( "Bunny", "data/models/sponza/sponza.obj" );
-		bunny._transformation = glm::scale( bunny._transformation, glm::vec3( 0.003f ) );
-		////////////////////////////////////variables uniformes //////////////////////////
-		location_MVP		  = glGetUniformLocation( Program, "MVPMatrix" );
-		location_NormalMatrix = glGetUniformLocation( Program, "NormalMatrix" );
-		location_ViewMatrix	  = glGetUniformLocation( Program, "ViewMatrix" );
-		location_ModelMatrix  = glGetUniformLocation( Program, "ModelMatrix" );
-		locationCameraPos	  = glGetUniformLocation( Program, "Camerapos" );
-		///////////////////////////////////////////////////////////////////////////////////
-		glDeleteShader( vertexShader );
-		glDeleteShader( fragmentShader );
+		_initCamera();
+
+		_bunny.load( "Bunny", "data/models/sponza/sponza.obj" );
+		_bunny._transformation = glm::scale( _bunny._transformation, glm::vec3( 0.003f ) );
+
+		// Uniform locations
+		_locationMVP		  = glGetUniformLocation( _program, "MVPMatrix" );
+		_locationNormalMatrix = glGetUniformLocation( _program, "NormalMatrix" );
+		_locationViewMatrix	  = glGetUniformLocation( _program, "ViewMatrix" );
+		_locationModelMatrix  = glGetUniformLocation( _program, "ModelMatrix" );
+		_locationCameraPos	  = glGetUniformLocation( _program, "Camerapos" );
+
+		glDeleteShader( _vertexShader );
+		glDeleteShader( _fragmentShader );
+
 		std::cout << "Done!" << std::endl;
 		return true;
 	}
 
-	void LabWork5::animate( const float p_deltaTime ) {}
+	void LabWork5::animate( const float deltaTime ) {}
 
 	void LabWork5::render()
 	{
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 		glEnable( GL_DEPTH_TEST );
 
-		// glEnable( GL_BLEND );//Activer le mélange des couleurs dans le framebuffer
-		// glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );//Indiquer la fonction de mélange à utiliser
+		// Calculate matrices
+		_MVP = _camera.getProjectionMatrix() * _camera.getViewMatrix() * _bunny._transformation;
+		Mat3f normalMatrix
+			= Mat3f( glm::transpose( glm::inverse( _camera.getViewMatrix() * _bunny._transformation ) ) );
 
-		/////////////////////////////////Calculer les matrices
-		//////////////////////////////////////////////////////////////////////////
-		MVPa				= camera.getProjectionMatrix() * camera.getViewMatrix() * bunny._transformation;
-		Mat3f Normal_Matrix = Mat3f( glm::transpose( glm::inverse( camera.getViewMatrix() * bunny._transformation ) ) );
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		//////////////////////Mettre a jour les variables uniformes/////////////////////////////////////////
-
-		glProgramUniformMatrix4fv( Program, location_MVP, 1, GL_FALSE, glm::value_ptr( MVPa ) );
-		glProgramUniformMatrix3fv( Program, location_NormalMatrix, 1, GL_FALSE, glm::value_ptr( Normal_Matrix ) );
+		// Update uniforms
+		glProgramUniformMatrix4fv( _program, _locationMVP, 1, GL_FALSE, glm::value_ptr( _MVP ) );
+		glProgramUniformMatrix3fv( _program, _locationNormalMatrix, 1, GL_FALSE, glm::value_ptr( normalMatrix ) );
 		glProgramUniform3fv(
-			Program, glGetUniformLocation( Program, "lightPos" ), 1, glm::value_ptr( camera.Positioncamera() ) );
+			_program, glGetUniformLocation( _program, "lightPos" ), 1, glm::value_ptr( _camera.Positioncamera() ) );
 		glProgramUniformMatrix4fv(
-			Program, location_ViewMatrix, 1, GL_FALSE, glm::value_ptr( camera.getViewMatrix() ) );
+			_program, _locationViewMatrix, 1, GL_FALSE, glm::value_ptr( _camera.getViewMatrix() ) );
 		glProgramUniformMatrix4fv(
-			Program, location_ModelMatrix, 1, GL_FALSE, glm::value_ptr( bunny._transformation ) );
-		glProgramUniform3fv( Program, locationCameraPos, 1, glm::value_ptr( camera.Positioncamera() ) );
+			_program, _locationModelMatrix, 1, GL_FALSE, glm::value_ptr( _bunny._transformation ) );
+		glProgramUniform3fv( _program, _locationCameraPos, 1, glm::value_ptr( _camera.Positioncamera() ) );
 
-		///////////////////////////////////////////////////////////////////////////////////////////////////
-
-		bunny.render( Program );
+		_bunny.render( _program );
 	}
+
 	void LabWork5::displayUI()
 	{
-		ImGui::Begin( "Settings lab work 5" );
-		ImGui::Text( "No setting available!" );
+		ImGui::Begin( "Settings Lab Work 5" );
+		ImGui::Text( "No settings available!" );
 		ImGui::End();
 	}
+
 	void LabWork5::_initCamera()
 	{
-		camera.setPosition( Vec3f( 1.f, 2.f, 0 ) );
-		camera.setScreenSize( _windowWidth, _windowHeight );
-		camera.setLookAt( Vec3f( 0.f, 0.f, 0.f ) );
+		_camera.setPosition( Vec3f( 1.f, 2.f, 0.f ) );
+		_camera.setScreenSize( _windowWidth, _windowHeight );
+		_camera.setLookAt( Vec3f( 0.f, 0.f, 0.f ) );
 	}
+
 	void LabWork5::_updateViewMatrix()
 	{
 		glProgramUniformMatrix4fv(
-			Program, location_ViewMatrix, 1, GL_FALSE, glm::value_ptr( camera.getViewMatrix() ) );
+			_program, _locationViewMatrix, 1, GL_FALSE, glm::value_ptr( _camera.getViewMatrix() ) );
 	}
-	void LabWork5::handleEvents( const SDL_Event & p_event )
+
+	void LabWork5::handleEvents( const SDL_Event & event )
 	{
-		if ( p_event.type == SDL_KEYDOWN )
+		if ( event.type == SDL_KEYDOWN )
 		{
-			switch ( p_event.key.keysym.scancode )
+			switch ( event.key.keysym.scancode )
 			{
-			case SDL_SCANCODE_W: // Front
-				camera.moveFront( _cameraSpeed );
+			case SDL_SCANCODE_W:
+				_camera.moveFront( _cameraSpeed );
 				_updateViewMatrix();
 				break;
-			case SDL_SCANCODE_S: // Back
-				camera.moveFront( -_cameraSpeed );
+			case SDL_SCANCODE_S:
+				_camera.moveFront( -_cameraSpeed );
 				_updateViewMatrix();
 				break;
-			case SDL_SCANCODE_A: // Left
-				camera.moveRight( -_cameraSpeed );
+			case SDL_SCANCODE_A:
+				_camera.moveRight( -_cameraSpeed );
 				_updateViewMatrix();
 				break;
-			case SDL_SCANCODE_D: // Right
-				camera.moveRight( _cameraSpeed );
+			case SDL_SCANCODE_D:
+				_camera.moveRight( _cameraSpeed );
 				_updateViewMatrix();
 				break;
-			case SDL_SCANCODE_R: // Up
-				camera.moveUp( _cameraSpeed );
+			case SDL_SCANCODE_R:
+				_camera.moveUp( _cameraSpeed );
 				_updateViewMatrix();
 				break;
-			case SDL_SCANCODE_F: // Bottom
-				camera.moveUp( -_cameraSpeed );
+			case SDL_SCANCODE_F:
+				_camera.moveUp( -_cameraSpeed );
 				_updateViewMatrix();
 				break;
 			default: break;
 			}
 		}
 
-		// Rotate when left click + motion (if not on Imgui widget).
-		if ( p_event.type == SDL_MOUSEMOTION && p_event.motion.state & SDL_BUTTON_LMASK
+		if ( event.type == SDL_MOUSEMOTION && event.motion.state & SDL_BUTTON_LMASK
 			 && !ImGui::GetIO().WantCaptureMouse )
 		{
-			camera.rotate( p_event.motion.xrel * _cameraSensitivity, p_event.motion.yrel * _cameraSensitivity );
+			_camera.rotate( event.motion.xrel * _cameraSensitivity, event.motion.yrel * _cameraSensitivity );
 			_updateViewMatrix();
 		}
 	}

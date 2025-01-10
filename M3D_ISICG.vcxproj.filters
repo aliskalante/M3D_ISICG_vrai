@@ -192,9 +192,6 @@
     <ClInclude Include="lab_work_3.hpp">
       <Filter>Source Files\lab_works\lab_work_3</Filter>
     </ClInclude>
-    <ClInclude Include="lw3.vert">
-      <Filter>Source Files\lab_works\lab_work_3\shaders</Filter>
-    </ClInclude>
     <ClInclude Include="lab_work_4.hpp">
       <Filter>Source Files\lab_works\lab_work_4</Filter>
     </ClInclude>
@@ -211,15 +208,6 @@
     </None>
     <None Include="src\lab_works\lab_work_1\shaders\lw1.vert">
       <Filter>Source Files\lab_works\lab_work_1\shaders</Filter>
-    </None>
-    <None Include="lw2.frag">
-      <Filter>Source Files\lab_works\lab_work_2\shaders</Filter>
-    </None>
-    <None Include="lw2.vert">
-      <Filter>Source Files\lab_works\lab_work_2\shaders</Filter>
-    </None>
-    <None Include="lw3.frag">
-      <Filter>Source Files\lab_works\lab_work_3\shaders</Filter>
     </None>
     <None Include="mesh.frag">
       <Filter>Source Files\lab_works\lab_work_4\shaders</Filter>
@@ -240,6 +228,21 @@
       <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
     </None>
     <None Include="shading_pass.frag">
+      <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
+    </None>
+    <None Include="lw3.frag">
+      <Filter>Source Files\lab_works\lab_work_3\shaders</Filter>
+    </None>
+    <None Include="lw3.vert">
+      <Filter>Source Files\lab_works\lab_work_3\shaders</Filter>
+    </None>
+    <None Include="lw2.frag">
+      <Filter>Source Files\lab_works\lab_work_2\shaders</Filter>
+    </None>
+    <None Include="lw2.vert">
+      <Filter>Source Files\lab_works\lab_work_2\shaders</Filter>
+    </None>
+    <None Include="sahding_pass.vert">
       <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
     </None>
   </ItemGroup>

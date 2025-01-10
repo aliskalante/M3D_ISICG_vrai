@@ -13,10 +13,9 @@ namespace M3D_ISICG
 		Assimp::Importer importer;
 
 		// Importer options
-		// Cf. http://assimp.sourceforge.net/lib_html/postprocess_8h.html.
 		const unsigned int flags = aiProcessPreset_TargetRealtime_Fast | aiProcess_FlipUVs;
 
-		// Read scene :
+		// Read scene:
 		// - Triangulates meshes
 		// - Computes vertex normals
 		// - Computes tangent space (tangent and bitagent)
@@ -24,7 +23,7 @@ namespace M3D_ISICG
 
 		if ( scene == nullptr )
 		{
-			throw std::runtime_error( "Fail to load file \" " + p_filePath.str() + "\": " + importer.GetErrorString() );
+			throw std::runtime_error( "Fail to load file \"" + p_filePath.str() + "\": " + importer.GetErrorString() );
 		}
 
 		_meshes.reserve( scene->mNumMeshes );
@@ -310,4 +309,11 @@ namespace M3D_ISICG
 		return texture;
 	}
 
+	void TriangleMeshModel::setupGL()
+	{
+		for ( auto & mesh : _meshes )
+		{
+			mesh.setupGL();
+		}
+	}
 } // namespace M3D_ISICG
