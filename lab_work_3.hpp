@@ -19,50 +19,37 @@ namespace M3D_ISICG
 		void animate( const float p_deltaTime ) override;
 		void render() override;
 		void handleEvents( const SDL_Event & p_event ) override;
-		// void handleEvents( const SDL_Event & p_event ) override;
 
 		void displayUI() override;
 
 	  private:
-		struct Mesh // structure Mesh
+		struct Mesh
 		{
-			std::vector<Vec3f>		  positions_sommets;	  // vector pour les positions des sommets
-			std::vector<Vec3f>		  couleurs_sommets;		  // vector pour les couleurs des sommets
-			std::vector<unsigned int> indices_sommets;		  // vector pour les indices des sommets
-			Mat4f					  matrice;				  // Matrice pour la transformation de l’objet
-			GLuint					  VBO_s, VBO_c, VAO, EBO; // les buffers et le VAO
-			Mat4f					  transformation;
+			std::vector<Vec3f>		  positions;						   // Positions des sommets
+			std::vector<Vec3f>		  colors;							   // Couleurs des sommets
+			std::vector<unsigned int> indices;							   // Indices des sommets
+			Mat4f					  transformMatrix;					   // Matrice de transformation
+			GLuint					  VBO_positions, VBO_colors, VAO, EBO; // Buffers et VAO
 		};
-		Mesh _cube;
+		Mesh _mesh;
 		Mesh _createCube();
 		void _initBuffers();
-		void _updateViewMatrix();		// Méthode pour mettre à jour la variable uniforme Viewmatrix
-		void _updateProjectionMatrix(); // Méthode pour mettre à jour la variable uniforme Projectionmatrix
+		void _updateViewMatrix();
+		void _updateProjectionMatrix();
 		void _initCamera();
-		// ================ Scene data.
 
-		Camera camera;
+		Camera _camera;
 
-		Mat4f			  MVPMatrix;
-		float			  fovy				 = 60;
-		float			  _cameraSpeed		 = 0.1f;
-		float			  _cameraSensitivity = 0.1f;
-		const std::string vertexShaderStr;	 // Déclaration de variable pour lire et stocker vertex shader
-		const std::string fragmentShaderStr; // Déclaration de variable pour lire et stocker fragment shader
-		// ================ GL data.
-		GLuint vertexShader, fragmentShader; // Déclaration des shaders
-		GLuint Program;						 // pour stocker l’identifiant de l’objet Program
-		// GLint  location_ModelMatrix;							 // Pour l'adresse de la variable uniforme modelmatrix
-		// GLint  location_ViewMatrix;						 // Pour l'adresse de la variable uniforme viewmatrix
-		// GLint  location_ProjectionMatrix;						 // Pour l'adresse de la variable uniforme
-		// Projectionmatrix
-		GLint location_MVP;
-		// ================
+		Mat4f _MVPMatrix;
+		float _fov				 = 60.0f;
+		float _cameraSpeed		 = 0.1f;
+		float _cameraSensitivity = 0.1f;
 
-		// ================ Settings.
-		Vec4f _bgColor = Vec4f( 0.8f, 0.8f, 0.8f, 1.f ); // Background color
+		GLuint _vertexShader, _fragmentShader;
+		GLuint _program;
+		GLint  _locationMVP;
 
-		// ================
+		Vec4f _bgColor = Vec4f( 0.8f, 0.8f, 0.8f, 1.f );
 
 		static const std::string _shaderFolder;
 	};

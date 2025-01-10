@@ -1,8 +1,11 @@
 #version 450
-layout( location = 0) out vec4 fragColor; //couleur par fragment
-in vec3 colorf;
-uniform float c_luminosite; //variable uniforme correspondant à la luminosité
 
-void main() {
-fragColor = vec4 (colorf*c_luminosite,1.0f); 
+layout(location = 0) out vec4 fragColor;
+in vec3 colorf;
+uniform float c_luminosite;
+
+void main()
+{
+    vec3 adjustedColor = colorf * c_luminosite; // ajuster couleur par luminosite
+    fragColor = vec4(adjustedColor, 1.0);      // fragment couleur
 }
