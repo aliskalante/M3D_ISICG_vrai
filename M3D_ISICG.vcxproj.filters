@@ -62,6 +62,9 @@
     <Filter Include="Source Files\lab_works\lab_work_6\shaders">
       <UniqueIdentifier>{d470449d-7a29-4633-a74e-500dbee16fea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\lab_works\projet">
+      <UniqueIdentifier>{3cf374f6-4204-40b2-9689-30a12d5d8458}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\application.cpp">
@@ -123,6 +126,9 @@
     </ClCompile>
     <ClCompile Include="lab_work_6.cpp">
       <Filter>Source Files\lab_works\lab_work_6</Filter>
+    </ClCompile>
+    <ClCompile Include="projet.cpp">
+      <Filter>Source Files\lab_works\projet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="lab_work_6.hpp">
       <Filter>Source Files\lab_works\lab_work_6</Filter>
+    </ClInclude>
+    <ClInclude Include="projet.hpp">
+      <Filter>Source Files\lab_works\projet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

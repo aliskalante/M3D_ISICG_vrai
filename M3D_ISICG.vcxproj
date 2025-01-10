@@ -31,6 +31,7 @@
     <ClCompile Include="lib\imgui\imgui_tables.cpp" />
     <ClCompile Include="lib\imgui\imgui_widgets.cpp" />
     <ClCompile Include="lab_work_2.cpp" />
+    <ClCompile Include="projet.cpp" />
     <ClCompile Include="src\application.cpp" />
     <ClCompile Include="src\lab_works\common\camera.cpp" />
     <ClCompile Include="src\lab_works\common\models\triangle_mesh.cpp" />
@@ -52,6 +53,7 @@
     <ClInclude Include="lib\imgui\backends\imgui_impl_sdl.h" />
     <ClInclude Include="lib\imgui\imgui.h" />
     <ClInclude Include="lib\imgui\imgui_internal.h" />
+    <ClInclude Include="projet.hpp" />
     <ClInclude Include="src\application.hpp" />
     <ClInclude Include="src\define.hpp" />
     <ClInclude Include="src\lab_works\common\base_lab_work.hpp" />
