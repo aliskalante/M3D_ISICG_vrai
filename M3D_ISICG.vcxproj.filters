@@ -112,23 +112,20 @@
     <ClCompile Include="src\utils\image.cpp">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
-    <ClCompile Include="lab_work_2.cpp">
+    <ClCompile Include="src\lab_works\lab_work_2\lab_work_2.cpp">
       <Filter>Source Files\lab_works\lab_work_2</Filter>
     </ClCompile>
-    <ClCompile Include="lab_work_3.cpp">
+    <ClCompile Include="src\lab_works\lab_work_3\lab_work_3.cpp">
       <Filter>Source Files\lab_works\lab_work_3</Filter>
     </ClCompile>
-    <ClCompile Include="lab_work_4.cpp">
+    <ClCompile Include="src\lab_works\lab_work_4\lab_work_4.cpp">
       <Filter>Source Files\lab_works\lab_work_4</Filter>
     </ClCompile>
-    <ClCompile Include="lab_work_5.cpp">
+    <ClCompile Include="src\lab_works\lab_work_5\lab_work_5.cpp">
       <Filter>Source Files\lab_works\lab_work_5</Filter>
     </ClCompile>
-    <ClCompile Include="lab_work_6.cpp">
+    <ClCompile Include="src\lab_works\lab_work_6\lab_work_6.cpp">
       <Filter>Source Files\lab_works\lab_work_6</Filter>
-    </ClCompile>
-    <ClCompile Include="projet.cpp">
-      <Filter>Source Files\lab_works\projet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -192,23 +189,20 @@
     <ClInclude Include="src\utils\file_path.hpp">
       <Filter>Source Files\utils</Filter>
     </ClInclude>
-    <ClInclude Include="lab_work_2.hpp">
+    <ClInclude Include="src\lab_works\lab_work_2\lab_work_2.hpp">
       <Filter>Source Files\lab_works\lab_work_2</Filter>
     </ClInclude>
-    <ClInclude Include="lab_work_3.hpp">
+    <ClInclude Include="src\lab_works\lab_work_3\lab_work_3.hpp">
       <Filter>Source Files\lab_works\lab_work_3</Filter>
     </ClInclude>
-    <ClInclude Include="lab_work_4.hpp">
+    <ClInclude Include="src\lab_works\lab_work_4\lab_work_4.hpp">
       <Filter>Source Files\lab_works\lab_work_4</Filter>
     </ClInclude>
-    <ClInclude Include="lab_work_5.hpp">
+    <ClInclude Include="src\lab_works\lab_work_5\lab_work_5.hpp">
       <Filter>Source Files\lab_works\lab_work_5</Filter>
     </ClInclude>
-    <ClInclude Include="lab_work_6.hpp">
+    <ClInclude Include="src\lab_works\lab_work_6\lab_work_6.hpp">
       <Filter>Source Files\lab_works\lab_work_6</Filter>
-    </ClInclude>
-    <ClInclude Include="projet.hpp">
-      <Filter>Source Files\lab_works\projet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -218,40 +212,40 @@
     <None Include="src\lab_works\lab_work_1\shaders\lw1.vert">
       <Filter>Source Files\lab_works\lab_work_1\shaders</Filter>
     </None>
-    <None Include="mesh.frag">
-      <Filter>Source Files\lab_works\lab_work_4\shaders</Filter>
-    </None>
-    <None Include="mesh.vert">
-      <Filter>Source Files\lab_works\lab_work_4\shaders</Filter>
-    </None>
-    <None Include="meshtexture.frag">
-      <Filter>Source Files\lab_works\lab_work_5\shaders</Filter>
-    </None>
-    <None Include="meshtexture.vert">
-      <Filter>Source Files\lab_works\lab_work_5\shaders</Filter>
-    </None>
-    <None Include="geometry_pass.frag">
-      <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
-    </None>
-    <None Include="geometry_pass.vert">
-      <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
-    </None>
-    <None Include="shading_pass.frag">
-      <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
-    </None>
-    <None Include="lw3.frag">
-      <Filter>Source Files\lab_works\lab_work_3\shaders</Filter>
-    </None>
-    <None Include="lw3.vert">
-      <Filter>Source Files\lab_works\lab_work_3\shaders</Filter>
-    </None>
-    <None Include="lw2.frag">
+    <None Include="src\lab_works\lab_work_2\shaders\lw2.frag">
       <Filter>Source Files\lab_works\lab_work_2\shaders</Filter>
     </None>
-    <None Include="lw2.vert">
+    <None Include="src\lab_works\lab_work_2\shaders\lw2.vert">
       <Filter>Source Files\lab_works\lab_work_2\shaders</Filter>
     </None>
-    <None Include="sahding_pass.vert">
+    <None Include="src\lab_works\lab_work_3\shaders\lw3.frag">
+      <Filter>Source Files\lab_works\lab_work_3\shaders</Filter>
+    </None>
+    <None Include="src\lab_works\lab_work_3\shaders\lw3.vert">
+      <Filter>Source Files\lab_works\lab_work_3\shaders</Filter>
+    </None>
+    <None Include="src\lab_works\lab_work_4\shaders\mesh.frag">
+      <Filter>Source Files\lab_works\lab_work_4\shaders</Filter>
+    </None>
+    <None Include="src\lab_works\lab_work_4\shaders\mesh.vert">
+      <Filter>Source Files\lab_works\lab_work_4\shaders</Filter>
+    </None>
+    <None Include="src\lab_works\lab_work_5\shaders\meshtexture.frag">
+      <Filter>Source Files\lab_works\lab_work_5\shaders</Filter>
+    </None>
+    <None Include="src\lab_works\lab_work_5\shaders\meshtexture.vert">
+      <Filter>Source Files\lab_works\lab_work_5\shaders</Filter>
+    </None>
+    <None Include="src\lab_works\lab_work_6\shaders\geometry_pass.frag">
+      <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
+    </None>
+    <None Include="src\lab_works\lab_work_6\shaders\geometry_pass.vert">
+      <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
+    </None>
+    <None Include="src\lab_works\lab_work_6\shaders\shading_pass.frag">
+      <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
+    </None>
+    <None Include="src\lab_works\lab_work_6\shaders\shading_pass.vert">
       <Filter>Source Files\lab_works\lab_work_6\shaders</Filter>
     </None>
   </ItemGroup>

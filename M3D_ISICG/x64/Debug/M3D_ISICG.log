@@ -1,8 +1,207 @@
-﻿  lab_work_manager.cpp
+﻿  gl3w.c
+  imgui_impl_opengl3.cpp
+  imgui_impl_sdl.cpp
+  imgui.cpp
+  imgui_draw.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  application.cpp
+  camera.cpp
+  triangle_mesh.cpp
+  triangle_mesh_model.cpp
   lab_work_1.cpp
-C:\Users\alisk\Desktop\M3D_ISICG-main\src\lab_works\lab_work_1\lab_work_1.cpp(120,28): warning C4566: le caractère représenté par le nom de caractère universel '\uFFFD' ne peut pas être représenté dans la page de codes actuelle (1252)
+  lab_work_manager.cpp
+  lab_work_2.cpp
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_2\lab_work_2.cpp(117,49): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_2\lab_work_2.cpp(125,52): warning C4267: 'argument' : conversion de 'size_t' en 'GLsizei', perte possible de données
+  lab_work_3.cpp
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_3\lab_work_3.cpp(108,51): warning C4267: 'argument' : conversion de 'size_t' en 'GLsizei', perte possible de données
+  lab_work_4.cpp
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_4\lab_work_4.cpp(114,81): error C2039: 'Positioncamera' n'est pas membre de 'M3D_ISICG::Camera'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\common\camera.hpp(9,8):
+      voir la déclaration de 'M3D_ISICG::Camera'
+  
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_4\lab_work_4.cpp(114,62): error C2672: 'glm::value_ptr' : fonction correspondante surchargée introuvable
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(161,24):
+      est peut-être 'T *glm::value_ptr(glm::qua<T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(155,31):
+      ou       'const T *glm::value_ptr(const glm::qua<T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(149,25):
+      ou       'T *glm::value_ptr(glm::mat<4,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(143,30):
+      ou       'const T *glm::value_ptr(const glm::mat<4,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(137,24):
+      ou       'T *glm::value_ptr(glm::mat<3,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(131,30):
+      ou       'const T *glm::value_ptr(const glm::mat<3,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(125,24):
+      ou       'T *glm::value_ptr(glm::mat<4,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(119,30):
+      ou       'const T *glm::value_ptr(const glm::mat<4,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(113,24):
+      ou       'T *glm::value_ptr(glm::mat<2,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(107,30):
+      ou       'const T *glm::value_ptr(const glm::mat<2,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(101,24):
+      ou       'T *glm::value_ptr(glm::mat<3,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(95,30):
+      ou       'const T *glm::value_ptr(const glm::mat<3,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(89,24):
+      ou       'T *glm::value_ptr(glm::mat<2,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(83,30):
+      ou       'const T *glm::value_ptr(const glm::mat<2,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(77,24):
+      ou       'T *glm::value_ptr(glm::mat<4,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(71,30):
+      ou       'const T *glm::value_ptr(const glm::mat<4,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(65,24):
+      ou       'T *glm::value_ptr(glm::mat<3,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(59,30):
+      ou       'const T *glm::value_ptr(const glm::mat<3,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(53,24):
+      ou       'T *glm::value_ptr(glm::mat<2,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(47,30):
+      ou       'const T *glm::value_ptr(const glm::mat<2,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(41,24):
+      ou       'T *glm::value_ptr(glm::vec<4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(35,30):
+      ou       'const T *glm::value_ptr(const glm::vec<4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(29,24):
+      ou       'T *glm::value_ptr(glm::vec<3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(23,31):
+      ou       'const T *glm::value_ptr(const glm::vec<3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(17,24):
+      ou       'T *glm::value_ptr(glm::vec<2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(11,30):
+      ou       'const T *glm::value_ptr(const glm::vec<2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.hpp(65,53):
+      ou       'const genType::value_type *glm::value_ptr(const genType &)'
+  
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_4\lab_work_4.cpp(114,3): error C2198: 'PFNGLPROGRAMUNIFORM3FVPROC' : pas assez d'arguments pour un appel
+  lab_work_5.cpp
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_5\lab_work_5.cpp(110,87): error C2039: 'Positioncamera' n'est pas membre de 'M3D_ISICG::Camera'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\common\camera.hpp(9,8):
+      voir la déclaration de 'M3D_ISICG::Camera'
+  
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_5\lab_work_5.cpp(110,68): error C2672: 'glm::value_ptr' : fonction correspondante surchargée introuvable
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(161,24):
+      est peut-être 'T *glm::value_ptr(glm::qua<T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(155,31):
+      ou       'const T *glm::value_ptr(const glm::qua<T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(149,25):
+      ou       'T *glm::value_ptr(glm::mat<4,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(143,30):
+      ou       'const T *glm::value_ptr(const glm::mat<4,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(137,24):
+      ou       'T *glm::value_ptr(glm::mat<3,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(131,30):
+      ou       'const T *glm::value_ptr(const glm::mat<3,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(125,24):
+      ou       'T *glm::value_ptr(glm::mat<4,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(119,30):
+      ou       'const T *glm::value_ptr(const glm::mat<4,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(113,24):
+      ou       'T *glm::value_ptr(glm::mat<2,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(107,30):
+      ou       'const T *glm::value_ptr(const glm::mat<2,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(101,24):
+      ou       'T *glm::value_ptr(glm::mat<3,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(95,30):
+      ou       'const T *glm::value_ptr(const glm::mat<3,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(89,24):
+      ou       'T *glm::value_ptr(glm::mat<2,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(83,30):
+      ou       'const T *glm::value_ptr(const glm::mat<2,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(77,24):
+      ou       'T *glm::value_ptr(glm::mat<4,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(71,30):
+      ou       'const T *glm::value_ptr(const glm::mat<4,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(65,24):
+      ou       'T *glm::value_ptr(glm::mat<3,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(59,30):
+      ou       'const T *glm::value_ptr(const glm::mat<3,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(53,24):
+      ou       'T *glm::value_ptr(glm::mat<2,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(47,30):
+      ou       'const T *glm::value_ptr(const glm::mat<2,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(41,24):
+      ou       'T *glm::value_ptr(glm::vec<4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(35,30):
+      ou       'const T *glm::value_ptr(const glm::vec<4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(29,24):
+      ou       'T *glm::value_ptr(glm::vec<3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(23,31):
+      ou       'const T *glm::value_ptr(const glm::vec<3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(17,24):
+      ou       'T *glm::value_ptr(glm::vec<2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(11,30):
+      ou       'const T *glm::value_ptr(const glm::vec<2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.hpp(65,53):
+      ou       'const genType::value_type *glm::value_ptr(const genType &)'
+  
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_5\lab_work_5.cpp(109,3): error C2198: 'PFNGLPROGRAMUNIFORM3FVPROC' : pas assez d'arguments pour un appel
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_5\lab_work_5.cpp(115,81): error C2039: 'Positioncamera' n'est pas membre de 'M3D_ISICG::Camera'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\common\camera.hpp(9,8):
+      voir la déclaration de 'M3D_ISICG::Camera'
+  
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_5\lab_work_5.cpp(115,62): error C2672: 'glm::value_ptr' : fonction correspondante surchargée introuvable
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(161,24):
+      est peut-être 'T *glm::value_ptr(glm::qua<T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(155,31):
+      ou       'const T *glm::value_ptr(const glm::qua<T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(149,25):
+      ou       'T *glm::value_ptr(glm::mat<4,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(143,30):
+      ou       'const T *glm::value_ptr(const glm::mat<4,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(137,24):
+      ou       'T *glm::value_ptr(glm::mat<3,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(131,30):
+      ou       'const T *glm::value_ptr(const glm::mat<3,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(125,24):
+      ou       'T *glm::value_ptr(glm::mat<4,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(119,30):
+      ou       'const T *glm::value_ptr(const glm::mat<4,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(113,24):
+      ou       'T *glm::value_ptr(glm::mat<2,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(107,30):
+      ou       'const T *glm::value_ptr(const glm::mat<2,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(101,24):
+      ou       'T *glm::value_ptr(glm::mat<3,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(95,30):
+      ou       'const T *glm::value_ptr(const glm::mat<3,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(89,24):
+      ou       'T *glm::value_ptr(glm::mat<2,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(83,30):
+      ou       'const T *glm::value_ptr(const glm::mat<2,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(77,24):
+      ou       'T *glm::value_ptr(glm::mat<4,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(71,30):
+      ou       'const T *glm::value_ptr(const glm::mat<4,4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(65,24):
+      ou       'T *glm::value_ptr(glm::mat<3,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(59,30):
+      ou       'const T *glm::value_ptr(const glm::mat<3,3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(53,24):
+      ou       'T *glm::value_ptr(glm::mat<2,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(47,30):
+      ou       'const T *glm::value_ptr(const glm::mat<2,2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(41,24):
+      ou       'T *glm::value_ptr(glm::vec<4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(35,30):
+      ou       'const T *glm::value_ptr(const glm::vec<4,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(29,24):
+      ou       'T *glm::value_ptr(glm::vec<3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(23,31):
+      ou       'const T *glm::value_ptr(const glm::vec<3,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(17,24):
+      ou       'T *glm::value_ptr(glm::vec<2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.inl(11,30):
+      ou       'const T *glm::value_ptr(const glm::vec<2,T,Q> &)'
+      C:\Users\alisk\source\repos\M3D_ISICG_vrai\lib\glm\glm\gtc\type_ptr.hpp(65,53):
+      ou       'const genType::value_type *glm::value_ptr(const genType &)'
+  
+C:\Users\alisk\source\repos\M3D_ISICG_vrai\src\lab_works\lab_work_5\lab_work_5.cpp(115,3): error C2198: 'PFNGLPROGRAMUNIFORM3FVPROC' : pas assez d'arguments pour un appel
+  lab_work_6.cpp
+  main.cpp
+  image.cpp
   Génération de code en cours...
-  M3D_ISICG.vcxproj -> C:\Users\alisk\Desktop\M3D_ISICG-main\x64\Debug\M3D_ISICG.exe
-  0 fichier(s) copié(s)
-  0 fichier(s) copié(s)
-  0 fichier(s) copié(s)
