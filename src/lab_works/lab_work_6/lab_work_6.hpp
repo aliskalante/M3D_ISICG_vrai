@@ -42,7 +42,7 @@ namespace M3D_ISICG
 		GLuint _compileShaders( const std::string & vertexSource, const std::string & fragmentSource );
 		void   checkShaderCompilation( GLuint shader );
 		void   checkProgramLinking( GLuint program );
-
+		
 	  private:
 		// Camera (pour les matrices projection/view)
 		Camera _camera;

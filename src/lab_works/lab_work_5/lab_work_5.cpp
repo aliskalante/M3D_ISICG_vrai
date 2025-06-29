@@ -106,13 +106,15 @@ namespace M3D_ISICG
 		// Update uniforms
 		glProgramUniformMatrix4fv( _program, _locationMVP, 1, GL_FALSE, glm::value_ptr( _MVP ) );
 		glProgramUniformMatrix3fv( _program, _locationNormalMatrix, 1, GL_FALSE, glm::value_ptr( normalMatrix ) );
-		glProgramUniform3fv(
-			_program, glGetUniformLocation( _program, "lightPos" ), 1, glm::value_ptr( _camera.Positioncamera() ) );
+		glProgramUniform3fv( _program,
+							 glGetUniformLocation( _program, "lightPos" ),
+							 1, 
+							 glm::value_ptr( _camera.getPosition() ) );
 		glProgramUniformMatrix4fv(
 			_program, _locationViewMatrix, 1, GL_FALSE, glm::value_ptr( _camera.getViewMatrix() ) );
 		glProgramUniformMatrix4fv(
 			_program, _locationModelMatrix, 1, GL_FALSE, glm::value_ptr( _bunny._transformation ) );
-		glProgramUniform3fv( _program, _locationCameraPos, 1, glm::value_ptr( _camera.Positioncamera() ) );
+		glProgramUniform3fv( _program, _locationCameraPos, 1, glm::value_ptr( _camera.getPosition() ) );
 
 		_bunny.render( _program );
 	}

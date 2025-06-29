@@ -42,7 +42,29 @@ namespace M3D_ISICG
 		std::cout << "Done!" << std::endl;
 		return true;
 	}
+	void LabWork6::checkShaderCompilation( GLuint shader )
+	{
+		GLint compiled;
+		glGetShaderiv( shader, GL_COMPILE_STATUS, &compiled );
+		if ( !compiled )
+		{
+			GLchar log[ 1024 ];
+			glGetShaderInfoLog( shader, sizeof( log ), nullptr, log );
+			std::cerr << "Shader compilation error: " << log << std::endl;
+		}
+	}
 
+	void LabWork6::checkProgramLinking( GLuint program )
+	{
+		GLint linked;
+		glGetProgramiv( program, GL_LINK_STATUS, &linked );
+		if ( !linked )
+		{
+			GLchar log[ 1024 ];
+			glGetProgramInfoLog( program, sizeof( log ), nullptr, log );
+			std::cerr << "Program linking error: " << log << std::endl;
+		}
+	}
 	void LabWork6::render()
 	{
 		glBindFramebuffer( GL_FRAMEBUFFER, _gBufferFBO );

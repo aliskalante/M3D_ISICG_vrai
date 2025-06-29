@@ -1,11 +1,11 @@
 ﻿#include "lab_work_manager.hpp"
 #include "imgui.h"
 #include "lab_work_1/lab_work_1.hpp"
-//#include "lab_work_2/lab_work_2.hpp"
-//#include "lab_work_3/lab_work_3.hpp"
-//#include "lab_work_4/lab_work_4.hpp"
-//#include "lab_work_5/lab_work_5.hpp"
-//#include "lab_work_6/lab_work_6.hpp"
+#include "lab_work_2/lab_work_2.hpp"
+#include "lab_work_3/lab_work_3.hpp"
+#include "lab_work_4/lab_work_4.hpp"
+#include "lab_work_5/lab_work_5.hpp"
+#include "lab_work_6/lab_work_6.hpp"
 
 namespace M3D_ISICG
 {
@@ -31,7 +31,7 @@ namespace M3D_ISICG
 				_current->init();			  
 			}
 		}
-		/*
+		
 		if ( ImGui ::MenuItem( "tp 2" ) )
 		{
 			if ( _type != TYPE ::LAB_WORK_2 ) 
@@ -105,6 +105,6 @@ namespace M3D_ISICG
 				_current->resize( w, h );	  
 				_current->init();			  
 			}
-		}*/
+		}
 	}
 } // namespace M3D_ISICG

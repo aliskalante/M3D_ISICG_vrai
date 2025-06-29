@@ -111,7 +111,7 @@ namespace M3D_ISICG
 			_program, _locationViewMatrix, 1, GL_FALSE, glm::value_ptr( _camera.getViewMatrix() ) );
 		glProgramUniformMatrix4fv(
 			_program, _locationModelMatrix, 1, GL_FALSE, glm::value_ptr( _bunny._transformation ) );
-		glProgramUniform3fv( _program, _locationCameraPos, 1, glm::value_ptr( _camera.Positioncamera() ) );
+		glProgramUniform3fv( _program, _locationCameraPos, 1, glm::value_ptr( _camera.getPosition() ) );
 
 		// Render the bunny
 		_bunny.render( _program );
